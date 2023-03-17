@@ -22,7 +22,7 @@ namespace WebSach.Areas.WebAdmin.Controllers
         }
 
         // GET: WebAdmin/AdminReactions/Details/5
-        public async Task<ActionResult> Details(DateTime id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -47,7 +47,7 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Update_at,Comment_content")] Reaction reaction)
+        public async Task<ActionResult> Create([Bind(Include = "Reaction_Id,Comment_content,Update_at")] Reaction reaction)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace WebSach.Areas.WebAdmin.Controllers
         }
 
         // GET: WebAdmin/AdminReactions/Edit/5
-        public async Task<ActionResult> Edit(DateTime id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -79,7 +79,7 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Update_at,Comment_content")] Reaction reaction)
+        public async Task<ActionResult> Edit([Bind(Include = "Reaction_Id,Comment_content,Update_at")] Reaction reaction)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace WebSach.Areas.WebAdmin.Controllers
         }
 
         // GET: WebAdmin/AdminReactions/Delete/5
-        public async Task<ActionResult> Delete(DateTime id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -108,7 +108,7 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // POST: WebAdmin/AdminReactions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(DateTime id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Reaction reaction = await db.Reaction.FindAsync(id);
             db.Reaction.Remove(reaction);

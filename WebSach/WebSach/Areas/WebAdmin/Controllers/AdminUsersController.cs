@@ -18,22 +18,22 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // GET: WebAdmin/AdminUsers
         public async Task<ActionResult> Index()
         {
-            return View(await db.Users.ToListAsync());
+            return View(await db.User.ToListAsync());
         }
 
         // GET: WebAdmin/AdminUsers/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public async Task<ActionResult> Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Users users = await db.Users.FindAsync(id);
-            if (users == null)
+            User user = await db.User.FindAsync(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(users);
+            return View(user);
         }
 
         // GET: WebAdmin/AdminUsers/Create
@@ -47,31 +47,31 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "User_Id,User_Name,Email,Password,Create_at,Last_Login,Status,Permission_Id")] Users users)
+        public async Task<ActionResult> Create([Bind(Include = "User_Name,Full_Name,Email,Password,Create_at,Last_Login,Status,Permission_Id")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(users);
+                db.User.Add(user);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(users);
+            return View(user);
         }
 
         // GET: WebAdmin/AdminUsers/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public async Task<ActionResult> Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Users users = await db.Users.FindAsync(id);
-            if (users == null)
+            User user = await db.User.FindAsync(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(users);
+            return View(user);
         }
 
         // POST: WebAdmin/AdminUsers/Edit/5
@@ -79,39 +79,39 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "User_Id,User_Name,Email,Password,Create_at,Last_Login,Status,Permission_Id")] Users users)
+        public async Task<ActionResult> Edit([Bind(Include = "User_Name,Full_Name,Email,Password,Create_at,Last_Login,Status,Permission_Id")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(users).State = EntityState.Modified;
+                db.Entry(user).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(users);
+            return View(user);
         }
 
         // GET: WebAdmin/AdminUsers/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public async Task<ActionResult> Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Users users = await db.Users.FindAsync(id);
-            if (users == null)
+            User user = await db.User.FindAsync(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(users);
+            return View(user);
         }
 
         // POST: WebAdmin/AdminUsers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(string id)
         {
-            Users users = await db.Users.FindAsync(id);
-            db.Users.Remove(users);
+            User user = await db.User.FindAsync(id);
+            db.User.Remove(user);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

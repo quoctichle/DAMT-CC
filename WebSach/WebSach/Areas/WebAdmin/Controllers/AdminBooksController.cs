@@ -47,7 +47,7 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Book_Id,Title,Category,Author,Description,Create_at,Update_at,Avatar,View,Content,User_Id")] Books books)
+        public async Task<ActionResult> Create([Bind(Include = "Book_Id,Title,Category,Author,Create_at,Update_at,Avatar,View,User_Id")] Books books)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Book_Id,Title,Category,Author,Description,Create_at,Update_at,Avatar,View,Content,User_Id")] Books books)
+        public async Task<ActionResult> Edit([Bind(Include = "Book_Id,Title,Category,Author,Create_at,Update_at,Avatar,View,User_Id")] Books books)
         {
             if (ModelState.IsValid)
             {

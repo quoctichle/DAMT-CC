@@ -9,6 +9,7 @@ namespace WebSach.Models
     public partial class Categories
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Category_Id { get; set; }
 
         [StringLength(250)]

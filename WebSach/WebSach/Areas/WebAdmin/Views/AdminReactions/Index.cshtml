@@ -15,6 +15,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Comment_content)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Update_at)
+        </th>
         <th></th>
     </tr>
 
@@ -24,9 +27,12 @@
             @Html.DisplayFor(modelItem => item.Comment_content)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Update_at }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Update_at }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Update_at })
+            @Html.DisplayFor(modelItem => item.Update_at)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Reaction_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Reaction_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Reaction_Id })
         </td>
     </tr>
 }

@@ -53,6 +53,12 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -129,7 +135,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\WebAdmin\Controllers\AdminAccessTimesController.cs" />
     <Compile Include="Areas\WebAdmin\Controllers\AdminBooksController.cs" />
     <Compile Include="Areas\WebAdmin\Controllers\AdminCategoriesController.cs" />
     <Compile Include="Areas\WebAdmin\Controllers\AdminReactionsController.cs" />
@@ -140,14 +145,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Access_Times.cs" />
     <Compile Include="Models\Books.cs" />
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\Chapter.cs" />
     <Compile Include="Models\Model1.cs" />
-    <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\Reaction.cs" />
-    <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +159,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\shortcuticon.png" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="CSS\StyleSheet1.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -188,11 +192,6 @@
     <Content Include="Areas\WebAdmin\Views\AdminUsers\Details.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminUsers\Edit.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminUsers\Index.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminAccessTimes\Create.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminAccessTimes\Delete.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminAccessTimes\Details.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminAccessTimes\Edit.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminAccessTimes\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\demo.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

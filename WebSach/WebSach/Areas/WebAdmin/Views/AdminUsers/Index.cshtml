@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebSach.Models.Users>
+﻿@model IEnumerable<WebSach.Models.User>
 
 @{
     ViewBag.Title = "Index";
@@ -13,7 +13,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.User_Name)
+            @Html.DisplayNameFor(model => model.Full_Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
@@ -39,7 +39,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.User_Name)
+            @Html.DisplayFor(modelItem => item.Full_Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Email)
@@ -60,9 +60,9 @@
             @Html.DisplayFor(modelItem => item.Permission_Id)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.User_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.User_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.User_Id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.User_Name }) |
+            @Html.ActionLink("Details", "Details", new { id=item.User_Name }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.User_Name })
         </td>
     </tr>
 }
