@@ -1,0 +1,27 @@
+﻿@model WebSach.Models.Reaction
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/WebAdmin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Reaction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment_content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment_content)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Update_at }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<WebSach.Models.Reaction>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/WebAdmin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment_content)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment_content)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Update_at }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Update_at }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Update_at })
+        </td>
+    </tr>
+}
+
+</table>
