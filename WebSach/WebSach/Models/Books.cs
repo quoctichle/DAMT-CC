@@ -27,8 +27,6 @@ namespace WebSach.Models
         [StringLength(50)]
         public string Author { get; set; }
 
-        public string Description { get; set; }
-
         public DateTime? Create_at { get; set; }
 
         public DateTime? Update_at { get; set; }
@@ -38,10 +36,7 @@ namespace WebSach.Models
 
         public int? View { get; set; }
 
-        public string Content { get; set; }
-
-        [StringLength(10)]
-        public string User_Id { get; set; }
+        public int? User_Id { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Chapter> Chapter { get; set; }

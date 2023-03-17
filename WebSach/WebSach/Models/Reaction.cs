@@ -9,9 +9,11 @@ namespace WebSach.Models
     [Table("Reaction")]
     public partial class Reaction
     {
+        [Key]
+        public int Reaction_Id { get; set; }
+
         public string Comment_content { get; set; }
 
-        [Key]
         public DateTime Update_at { get; set; }
     }
 }

@@ -1,0 +1,27 @@
+﻿@model WebSach.Models.Access_Times
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/WebAdmin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Access_Times</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Update_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Update_at)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AccessTimes }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

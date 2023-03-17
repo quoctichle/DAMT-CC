@@ -11,112 +11,107 @@ using WebSach.Models;
 
 namespace WebSach.Areas.WebAdmin.Controllers
 {
-    public class AdminChaptersController : Controller
+    public class AdminAccessTimesController : Controller
     {
         private Model1 db = new Model1();
 
-        // GET: WebAdmin/AdminChapters
+        // GET: WebAdmin/AdminAccessTimes
         public async Task<ActionResult> Index()
         {
-            var chapter = db.Chapter.Include(c => c.Books);
-            return View(await chapter.ToListAsync());
+            return View(await db.Access_Times.ToListAsync());
         }
 
-        // GET: WebAdmin/AdminChapters/Details/5
+        // GET: WebAdmin/AdminAccessTimes/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Chapter chapter = await db.Chapter.FindAsync(id);
-            if (chapter == null)
+            Access_Times access_Times = await db.Access_Times.FindAsync(id);
+            if (access_Times == null)
             {
                 return HttpNotFound();
             }
-            return View(chapter);
+            return View(access_Times);
         }
 
-        // GET: WebAdmin/AdminChapters/Create
+        // GET: WebAdmin/AdminAccessTimes/Create
         public ActionResult Create()
         {
-            ViewBag.Book_Id = new SelectList(db.Books, "Book_Id", "Title");
             return View();
         }
 
-        // POST: WebAdmin/AdminChapters/Create
+        // POST: WebAdmin/AdminAccessTimes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Chapter_Id,Chapter_Name,Content,Book_Id")] Chapter chapter)
+        public async Task<ActionResult> Create([Bind(Include = "AccessTimes,Update_at")] Access_Times access_Times)
         {
             if (ModelState.IsValid)
             {
-                db.Chapter.Add(chapter);
+                db.Access_Times.Add(access_Times);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Book_Id = new SelectList(db.Books, "Book_Id", "Title", chapter.Book_Id);
-            return View(chapter);
+            return View(access_Times);
         }
 
-        // GET: WebAdmin/AdminChapters/Edit/5
+        // GET: WebAdmin/AdminAccessTimes/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Chapter chapter = await db.Chapter.FindAsync(id);
-            if (chapter == null)
+            Access_Times access_Times = await db.Access_Times.FindAsync(id);
+            if (access_Times == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Book_Id = new SelectList(db.Books, "Book_Id", "Title", chapter.Book_Id);
-            return View(chapter);
+            return View(access_Times);
         }
 
-        // POST: WebAdmin/AdminChapters/Edit/5
+        // POST: WebAdmin/AdminAccessTimes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Chapter_Id,Chapter_Name,Content,Book_Id")] Chapter chapter)
+        public async Task<ActionResult> Edit([Bind(Include = "AccessTimes,Update_at")] Access_Times access_Times)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(chapter).State = EntityState.Modified;
+                db.Entry(access_Times).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.Book_Id = new SelectList(db.Books, "Book_Id", "Title", chapter.Book_Id);
-            return View(chapter);
+            return View(access_Times);
         }
 
-        // GET: WebAdmin/AdminChapters/Delete/5
+        // GET: WebAdmin/AdminAccessTimes/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Chapter chapter = await db.Chapter.FindAsync(id);
-            if (chapter == null)
+            Access_Times access_Times = await db.Access_Times.FindAsync(id);
+            if (access_Times == null)
             {
                 return HttpNotFound();
             }
-            return View(chapter);
+            return View(access_Times);
         }
 
-        // POST: WebAdmin/AdminChapters/Delete/5
+        // POST: WebAdmin/AdminAccessTimes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Chapter chapter = await db.Chapter.FindAsync(id);
-            db.Chapter.Remove(chapter);
+            Access_Times access_Times = await db.Access_Times.FindAsync(id);
+            db.Access_Times.Remove(access_Times);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

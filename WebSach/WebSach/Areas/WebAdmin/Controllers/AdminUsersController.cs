@@ -18,7 +18,7 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // GET: WebAdmin/AdminUsers
         public async Task<ActionResult> Index()
         {
-            return View(await db.User.ToListAsync());
+            return View(await db.Users.ToListAsync());
         }
 
         // GET: WebAdmin/AdminUsers/Details/5
@@ -28,12 +28,12 @@ namespace WebSach.Areas.WebAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = await db.User.FindAsync(id);
-            if (user == null)
+            Users users = await db.Users.FindAsync(id);
+            if (users == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(users);
         }
 
         // GET: WebAdmin/AdminUsers/Create
@@ -47,16 +47,16 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "User_Id,User_Name,Email,Password,Create_at,Last_Login,Status,Permission_Id")] User user)
+        public async Task<ActionResult> Create([Bind(Include = "User_Id,User_Name,Email,Password,Create_at,Last_Login,Status,Permission_Id")] Users users)
         {
             if (ModelState.IsValid)
             {
-                db.User.Add(user);
+                db.Users.Add(users);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(user);
+            return View(users);
         }
 
         // GET: WebAdmin/AdminUsers/Edit/5
@@ -66,12 +66,12 @@ namespace WebSach.Areas.WebAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = await db.User.FindAsync(id);
-            if (user == null)
+            Users users = await db.Users.FindAsync(id);
+            if (users == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(users);
         }
 
         // POST: WebAdmin/AdminUsers/Edit/5
@@ -79,15 +79,15 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "User_Id,User_Name,Email,Password,Create_at,Last_Login,Status,Permission_Id")] User user)
+        public async Task<ActionResult> Edit([Bind(Include = "User_Id,User_Name,Email,Password,Create_at,Last_Login,Status,Permission_Id")] Users users)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
+                db.Entry(users).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(user);
+            return View(users);
         }
 
         // GET: WebAdmin/AdminUsers/Delete/5
@@ -97,12 +97,12 @@ namespace WebSach.Areas.WebAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = await db.User.FindAsync(id);
-            if (user == null)
+            Users users = await db.Users.FindAsync(id);
+            if (users == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(users);
         }
 
         // POST: WebAdmin/AdminUsers/Delete/5
@@ -110,8 +110,8 @@ namespace WebSach.Areas.WebAdmin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            User user = await db.User.FindAsync(id);
-            db.User.Remove(user);
+            Users users = await db.Users.FindAsync(id);
+            db.Users.Remove(users);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

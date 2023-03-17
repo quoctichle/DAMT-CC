@@ -129,10 +129,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\WebAdmin\Controllers\AdminAccessTimesController.cs" />
     <Compile Include="Areas\WebAdmin\Controllers\AdminBooksController.cs" />
     <Compile Include="Areas\WebAdmin\Controllers\AdminCategoriesController.cs" />
-    <Compile Include="Areas\WebAdmin\Controllers\AdminChaptersController.cs" />
-    <Compile Include="Areas\WebAdmin\Controllers\AdminPermissionsController.cs" />
     <Compile Include="Areas\WebAdmin\Controllers\AdminReactionsController.cs" />
     <Compile Include="Areas\WebAdmin\Controllers\AdminUsersController.cs" />
     <Compile Include="Areas\WebAdmin\WebAdminAreaRegistration.cs" />
@@ -141,13 +140,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Access_Times.cs" />
     <Compile Include="Models\Books.cs" />
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\Chapter.cs" />
     <Compile Include="Models\Model1.cs" />
     <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\Reaction.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -178,16 +178,6 @@
     <Content Include="Areas\WebAdmin\Views\AdminCategories\Details.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminCategories\Edit.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminCategories\Index.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminChapters\Create.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminChapters\Delete.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminChapters\Details.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminChapters\Edit.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminChapters\Index.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminPermissions\Create.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminPermissions\Delete.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminPermissions\Details.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminPermissions\Edit.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminPermissions\Index.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminReactions\Create.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminReactions\Delete.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminReactions\Details.cshtml" />
@@ -198,6 +188,11 @@
     <Content Include="Areas\WebAdmin\Views\AdminUsers\Details.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminUsers\Edit.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminUsers\Index.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\AdminAccessTimes\Create.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\AdminAccessTimes\Delete.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\AdminAccessTimes\Details.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\AdminAccessTimes\Edit.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\AdminAccessTimes\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\demo.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

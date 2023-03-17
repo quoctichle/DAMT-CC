@@ -10,7 +10,6 @@ namespace WebSach.Models
     public partial class Chapter
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Chapter_Id { get; set; }
 
         [StringLength(250)]

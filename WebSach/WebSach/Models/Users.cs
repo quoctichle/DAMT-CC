@@ -6,11 +6,9 @@ namespace WebSach.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("User")]
-    public partial class User
+    public partial class Users
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int User_Id { get; set; }
 
         [StringLength(50)]

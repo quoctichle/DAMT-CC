@@ -6,14 +6,11 @@ namespace WebSach.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Categories
+    public partial class Access_Times
     {
         [Key]
-        public int Category_Id { get; set; }
+        public int AccessTimes { get; set; }
 
-        [StringLength(250)]
-        public string Category_Name { get; set; }
-
-        public string Content { get; set; }
+        public DateTime? Update_at { get; set; }
     }
 }
