@@ -43,8 +43,6 @@ namespace WebSach.Areas.WebAdmin.Controllers
         }
 
         // POST: WebAdmin/AdminUsers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "User_Name,Full_Name,Email,Password,Create_at,Last_Login,Status,Permission_Id")] User user)
@@ -75,8 +73,6 @@ namespace WebSach.Areas.WebAdmin.Controllers
         }
 
         // POST: WebAdmin/AdminUsers/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "User_Name,Full_Name,Email,Password,Create_at,Last_Login,Status,Permission_Id")] User user)
