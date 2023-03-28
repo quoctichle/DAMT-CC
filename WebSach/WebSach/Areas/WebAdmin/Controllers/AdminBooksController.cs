@@ -43,8 +43,6 @@ namespace WebSach.Areas.WebAdmin.Controllers
         }
 
         // POST: WebAdmin/AdminBooks/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Book_Id,Title,Category,Author,Create_at,Update_at,Avatar,View,User_Id")] Books books)
@@ -75,8 +73,6 @@ namespace WebSach.Areas.WebAdmin.Controllers
         }
 
         // POST: WebAdmin/AdminBooks/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Book_Id,Title,Category,Author,Create_at,Update_at,Avatar,View,User_Id")] Books books)
