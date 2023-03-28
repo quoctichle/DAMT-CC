@@ -43,8 +43,6 @@ namespace WebSach.Areas.WebAdmin.Controllers
         }
 
         // POST: WebAdmin/AdminReactions/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Reaction_Id,Comment_content,Update_at")] Reaction reaction)
@@ -75,8 +73,6 @@ namespace WebSach.Areas.WebAdmin.Controllers
         }
 
         // POST: WebAdmin/AdminReactions/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Reaction_Id,Comment_content,Update_at")] Reaction reaction)
