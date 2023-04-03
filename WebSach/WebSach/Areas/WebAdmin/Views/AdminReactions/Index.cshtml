@@ -1,40 +1,18 @@
-﻿@model IEnumerable<WebSach.Models.Reaction>
-
+﻿@model List<WebSach.Models.Reaction>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/WebAdmin/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Comment_content)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Update_at)
-        </th>
-        <th></th>
-    </tr>
+@foreach (var item in ViewBag.data)
+{
+    if (item.Parent == 0)
+    {
+        <div class="comment_parent" style="width:100%;background:#808080">
+            <label>@item.Comment_content</label>
+            @{Html.RenderAction("_ChildComment", "AdminReactions", new { Comment_Id = item.Comment_Id });}
+        </div>
+    }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comment_content)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Update_at)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Reaction_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Reaction_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Reaction_Id })
-        </td>
-    </tr>
 }
-
-</table>

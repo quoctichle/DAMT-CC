@@ -192,6 +192,7 @@
     <Content Include="Areas\WebAdmin\Views\AdminUsers\Details.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminUsers\Edit.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminUsers\Index.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\Shared\_ChildComment.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\demo.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
