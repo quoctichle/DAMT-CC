@@ -7,6 +7,32 @@
 
 <h2>Index</h2>
 
+<style>
+    table, th, td {
+        border: 1px solid #c0d399;
+        width: 80%;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+        table tr:nth-child(odd) {
+            background-color: #eee;
+        }
+
+        table tr:nth-child(even) {
+            background-color: white;
+        }
+
+        table tr:nth-child(1) {
+            background-color: #c0d399;
+        }
+
+    .center-parent {
+        text-align: center;
+    }
+</style>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -36,42 +62,43 @@
         <th>
             @Html.DisplayNameFor(model => model.View)
         </th>
-        
+
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.Full_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Author)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Create_at)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Update_at)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Avatar)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.View)
-        </td>
-        
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Book_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Book_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Book_Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Full_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Create_at)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Update_at)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Avatar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.View)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Book_Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Book_Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Book_Id })
+            </td>
+        </tr>
+    }
 
 </table>
