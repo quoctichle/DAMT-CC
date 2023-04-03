@@ -12,9 +12,12 @@ namespace WebSach.Models
         [Key]
         public int Comment_Id { get; set; }
 
+
+        public int Parent { get; set; }
         public string Comment_content { get; set; }
 
         public DateTime Update_at { get; set; }
+
 
         [StringLength(50)]
         public string User_Name { get; set; }
