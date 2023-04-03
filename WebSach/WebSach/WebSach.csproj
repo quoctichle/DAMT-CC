@@ -139,6 +139,7 @@
     <Compile Include="Areas\WebAdmin\Controllers\AdminCategoriesController.cs" />
     <Compile Include="Areas\WebAdmin\Controllers\AdminReactionsController.cs" />
     <Compile Include="Areas\WebAdmin\Controllers\AdminUsersController.cs" />
+    <Compile Include="Areas\WebAdmin\Controllers\BooksController.cs" />
     <Compile Include="Areas\WebAdmin\WebAdminAreaRegistration.cs" />
     <Compile Include="Content\ReactionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -193,6 +194,11 @@
     <Content Include="Areas\WebAdmin\Views\AdminUsers\Edit.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminUsers\Index.cshtml" />
     <Content Include="Areas\WebAdmin\Views\Shared\_ChildComment.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\Books\Create.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\Books\Delete.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\Books\Details.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\Books\Edit.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\Books\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\demo.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
