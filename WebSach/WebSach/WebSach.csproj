@@ -171,6 +171,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\WebAdmin\Controllers\AdminBooksController.cs" />
     <Compile Include="Areas\WebAdmin\Controllers\AdminCategoriesController.cs" />
+    <Compile Include="Areas\WebAdmin\Controllers\AdminChaptersController.cs" />
     <Compile Include="Areas\WebAdmin\Controllers\AdminUsersController.cs" />
     <Compile Include="Areas\WebAdmin\Controllers\HomeAdminController.cs" />
     <Compile Include="Areas\WebAdmin\WebAdminAreaRegistration.cs" />
@@ -223,6 +224,11 @@
     <Content Include="Areas\WebAdmin\Views\AdminBooks\Edit.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminBooks\Index.cshtml" />
     <Content Include="Areas\WebAdmin\Views\HomeAdmin\UserCountByMonth.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\AdminChapters\Create.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\AdminChapters\Details.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\AdminChapters\Edit.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\AdminChapters\Delete.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\AdminChapters\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\demo.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
