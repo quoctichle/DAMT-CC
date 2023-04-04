@@ -63,7 +63,10 @@
             @Html.DisplayFor(modelItem => item.Update_at)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Avatar)
+            @if (!String.IsNullOrEmpty(item.Avatar))
+            {
+                <img src="@Url.Content("~/Content/img/" + item.Avatar)" alt="Avatar" width="50" height="50" />
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.View)

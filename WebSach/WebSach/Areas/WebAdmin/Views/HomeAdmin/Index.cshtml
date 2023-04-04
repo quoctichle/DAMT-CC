@@ -1,78 +1,32 @@
 ﻿
+@model WebSach.Models.ChartViewModel
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/WebAdmin/Views/Shared/_AdminLayout.cshtml";
 }
-<script src="https://d3js.org/d3.v5.min.js"></script>
-<div class="col-md-6">
-    <h1>Biểu Đồ So Sánh Lượt View Hàng Tháng</h1>
-    <div id="chart" style="display: inline-block"></div>
-</div>
+
+
+<canvas id="myChart"></canvas>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        var data = [
-            { month: "Jan", income: 100 },
-            { month: "Feb", income: 150 },
-            { month: "Mar", income: 75 },
-            { month: "Apr", income: 200 },
-            { month: "May", income: 125 },
-            { month: "Jun", income: 250 },
-            { month: "Jul", income: 175 },
-            { month: "Aug", income: 225 },
-            { month: "Sep", income: 150 },
-            { month: "Oct", income: 175 },
-            { month: "Nov", income: 200 },
-            { month: "Dec", income: 125 }
-        ];
+        var data = @Html.Raw(Json.Serialize(Model));
 
+        var labels = data.map(function (d) { return d.month; });
+        var values = data.map(function (d) { return d.registrations; });
 
-
-        var today = new Date();
-        var currentMonth = today.toLocaleString('default', { month: 'short' });
-        var currentYear = today.getFullYear();
-
-        // Tạo đối tượng mới chứa tháng và năm hiện tại và giá trị thu nhập mặc định là 0
-        var newData = { month: currentMonth + ' ' + currentYear, income: 100 };
-
-        // Thêm đối tượng mới vào mảng data
-        data.push(newData);
-
-
-
-
-
-        var margin = { top: 20, right: 20, bottom: 30, left: 40 },
-            width = 960 - margin.left - margin.right,
-            height = 500 - margin.top - margin.bottom;
-
-        var svg = d3.select("#chart").append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-        var x = d3.scaleBand()
-            .range([0, width])
-            .padding(0.1);
-
-        var y = d3.scaleLinear()
-            .range([height, 0]);
-
-        x.domain(data.map(function (d) { return d.month; }));
-        y.domain([0, d3.max(data, function (d) { return d.income; })]);
-
-        svg.append("g")
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x));
-
-        svg.append("g")
-            .call(d3.axisLeft(y));
-
-        svg.selectAll(".bar")
-            .data(data)
-            .enter().append("rect")
-            .attr("class", "bar")
-            .attr("x", function (d) { return x(d.month); })
-            .attr("y", function (d) { return y(d.income); })
-            .attr("width", x.bandwidth())
-            .attr("height", function (d) { return height - y(d.income); });
-    </script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'New Registrations',
+                    data: values,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },

@@ -413,3 +413,25 @@ C:\Users\TICH\Desktop\DACCMT\DAMT-CC\WebSach\WebSach\bin\Microsoft.CodeDom.Provi
 C:\Users\TICH\Desktop\DACCMT\DAMT-CC\WebSach\WebSach\obj\Debug\WebSach.csproj.CopyComplete
 C:\Users\TICH\Desktop\DACCMT\DAMT-CC\WebSach\WebSach\obj\Debug\WebSach.dll
 C:\Users\TICH\Desktop\DACCMT\DAMT-CC\WebSach\WebSach\obj\Debug\WebSach.pdb
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\Microsoft.AspNetCore.Mvc.Abstractions.dll
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\Microsoft.AspNetCore.Routing.Abstractions.dll
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\Microsoft.Net.Http.Headers.dll
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\System.Buffers.dll
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\System.Memory.dll
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\System.Numerics.Vectors.dll
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\System.Text.Encodings.Web.dll
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\Microsoft.AspNetCore.Http.Abstractions.xml
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\Microsoft.AspNetCore.Http.Features.xml
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\Microsoft.AspNetCore.Mvc.Abstractions.xml
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\Microsoft.AspNetCore.Routing.Abstractions.xml
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\Microsoft.Net.Http.Headers.xml
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\System.Buffers.xml
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\System.Memory.xml
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\System.Numerics.Vectors.xml
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\TICH\Desktop\Thư mục mới\DAMT-CC\WebSach\WebSach\bin\System.Text.Encodings.Web.xml

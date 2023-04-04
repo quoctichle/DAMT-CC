@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebSach.Models;
+using System.IO;
 
 namespace WebSach.Areas.WebAdmin.Controllers
 {
@@ -50,10 +51,28 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Book_Id,Title,Category_Id,Author,Create_at,Update_at,Avatar,View,Content,User_Name")] Books books)
+        public async Task<ActionResult> Create([Bind(Include = "Book_Id,Title,Category_Id,Author,Create_at,Update_at,Avatar,View,Content,User_Name")] Books books, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                if (file != null && file.ContentLength > 0)
+                {
+                    // Get the filename and extension of the uploaded file
+                    var fileName = Path.GetFileName(file.FileName);
+                    var extension = Path.GetExtension(fileName);
+
+                    // Generate a unique filename for the uploaded file
+                    var uniqueFileName = Guid.NewGuid().ToString() + extension;
+
+                    // Save the uploaded file to the Content/img folder
+                    var path = Path.Combine(Server.MapPath("~/Content/img"), uniqueFileName);
+                    file.SaveAs(path);
+
+                    // Set the Avatar property of the Books model to the filename of the uploaded file
+                    books.Avatar = uniqueFileName;
+                }
+
+
                 db.Books.Add(books);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -63,6 +82,8 @@ namespace WebSach.Areas.WebAdmin.Controllers
             ViewBag.User_Name = new SelectList(db.User, "User_Name", "Full_Name", books.User_Name);
             return View(books);
         }
+
+
 
         // GET: WebAdmin/AdminBooks/Edit/5
         public async Task<ActionResult> Edit(int? id)
