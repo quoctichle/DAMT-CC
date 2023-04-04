@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -19,14 +20,20 @@ namespace WebSach.Areas.WebAdmin.Controllers
         {
             var userCounts = db.User
                 .GroupBy(u => new { Month = u.Create_at.Value.Month, Year = u.Create_at.Value.Year })
-                .Select(g => new { MonthYear = g.Key.Month + "/" + g.Key.Year, Count = g.Count() })
+                .Select(g => new { MonthYear = g.Key.Year + "/" + g.Key.Month, Count = g.Count() })
+                .AsEnumerable()
+                .Select(g => new { MonthYear = DateTime.ParseExact(g.MonthYear, "yyyy/M", CultureInfo.InvariantCulture), Count = g.Count })
                 .OrderBy(g => g.MonthYear)
                 .ToList();
 
-            ViewBag.Months = userCounts.Select(uc => uc.MonthYear).ToList();
+            ViewBag.Months = userCounts.Select(uc => uc.MonthYear.ToString("yyyy/MM")).ToList();
             ViewBag.UserCounts = userCounts.Select(uc => uc.Count).ToList();
+
+
 
             return View();
         }
+
+
     }
 }
