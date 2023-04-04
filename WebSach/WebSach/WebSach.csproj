@@ -262,7 +262,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\WebAdmin\Data\" />
-    <Folder Include="Content\img\" />
+    <Folder Include="Content\ContentChapter\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

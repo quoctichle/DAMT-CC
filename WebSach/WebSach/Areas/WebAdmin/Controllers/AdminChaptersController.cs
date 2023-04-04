@@ -62,6 +62,18 @@ namespace WebSach.Areas.WebAdmin.Controllers
             return View(chapter);
         }
 
+
+        public string ProcessUpload(HttpPostedFileBase file)
+        {
+            if (file == null)
+            {
+                return "";
+            }
+            file.SaveAs(Server.MapPath("~/Content/ContentChapter/" + file.FileName));
+            return "/Content/ContentChapter/" + file.FileName;
+        }
+
+
         // GET: WebAdmin/AdminChapters/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {

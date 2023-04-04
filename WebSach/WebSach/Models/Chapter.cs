@@ -25,5 +25,6 @@ namespace WebSach.Models
         public string Content { get; set; }
 
         public virtual Books Books { get; set; }
+
     }
 }
