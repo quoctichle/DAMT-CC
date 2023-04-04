@@ -47,7 +47,7 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Category_Id,Category_Name,Content")] Categories categories)
+        public async Task<ActionResult> Create([Bind(Include = "Category_Id,Category_Name")] Categories categories)
         {
             if (ModelState.IsValid)
             {
