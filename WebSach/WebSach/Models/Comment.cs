@@ -6,16 +6,18 @@ namespace WebSach.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Reaction")]
-    public partial class Reaction
+    [Table("Comment")]
+    public partial class Comment
     {
         [Key]
         public int Comment_Id { get; set; }
 
+        [StringLength(250)]
         public string Comment_content { get; set; }
 
         public DateTime Update_at { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string User_Name { get; set; }
 

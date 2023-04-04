@@ -43,6 +43,8 @@ namespace WebSach.Areas.WebAdmin.Controllers
         }
 
         // POST: WebAdmin/AdminCategories/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Category_Id,Category_Name,Content")] Categories categories)
@@ -73,6 +75,8 @@ namespace WebSach.Areas.WebAdmin.Controllers
         }
 
         // POST: WebAdmin/AdminCategories/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Category_Id,Category_Name,Content")] Categories categories)

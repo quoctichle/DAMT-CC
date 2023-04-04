@@ -12,19 +12,17 @@ namespace WebSach.Models
         public Books()
         {
             Chapter = new HashSet<Chapter>();
-            Reaction = new HashSet<Reaction>();
+            Comment = new HashSet<Comment>();
         }
 
         [Key]
         public int Book_Id { get; set; }
 
         [Required]
-        [StringLength(250)]
+        [StringLength(200)]
         public string Title { get; set; }
 
-        [Required]
-        [StringLength(250)]
-        public string Category { get; set; }
+        public int Category_Id { get; set; }
 
         [StringLength(50)]
         public string Author { get; set; }
@@ -44,12 +42,14 @@ namespace WebSach.Models
         [StringLength(50)]
         public string User_Name { get; set; }
 
+        public virtual Categories Categories { get; set; }
+
         public virtual User User { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Chapter> Chapter { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reaction> Reaction { get; set; }
+        public virtual ICollection<Comment> Comment { get; set; }
     }
 }

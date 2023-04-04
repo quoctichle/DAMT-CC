@@ -18,7 +18,8 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // GET: WebAdmin/AdminBooks
         public async Task<ActionResult> Index()
         {
-            return View(await db.Books.ToListAsync());
+            var books = db.Books.Include(b => b.Categories).Include(b => b.User);
+            return View(await books.ToListAsync());
         }
 
         // GET: WebAdmin/AdminBooks/Details/5
@@ -39,13 +40,17 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // GET: WebAdmin/AdminBooks/Create
         public ActionResult Create()
         {
+            ViewBag.Category_Id = new SelectList(db.Categories, "Category_Id", "Category_Name");
+            ViewBag.User_Name = new SelectList(db.User, "User_Name", "Full_Name");
             return View();
         }
 
         // POST: WebAdmin/AdminBooks/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Book_Id,Title,Category,Author,Create_at,Update_at,Avatar,View,User_Id")] Books books)
+        public async Task<ActionResult> Create([Bind(Include = "Book_Id,Title,Category_Id,Author,Create_at,Update_at,Avatar,View,Content,User_Name")] Books books)
         {
             if (ModelState.IsValid)
             {
@@ -54,6 +59,8 @@ namespace WebSach.Areas.WebAdmin.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.Category_Id = new SelectList(db.Categories, "Category_Id", "Category_Name", books.Category_Id);
+            ViewBag.User_Name = new SelectList(db.User, "User_Name", "Full_Name", books.User_Name);
             return View(books);
         }
 
@@ -69,13 +76,17 @@ namespace WebSach.Areas.WebAdmin.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Category_Id = new SelectList(db.Categories, "Category_Id", "Category_Name", books.Category_Id);
+            ViewBag.User_Name = new SelectList(db.User, "User_Name", "Full_Name", books.User_Name);
             return View(books);
         }
 
         // POST: WebAdmin/AdminBooks/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Book_Id,Title,Category,Author,Create_at,Update_at,Avatar,View,User_Id")] Books books)
+        public async Task<ActionResult> Edit([Bind(Include = "Book_Id,Title,Category_Id,Author,Create_at,Update_at,Avatar,View,Content,User_Name")] Books books)
         {
             if (ModelState.IsValid)
             {
@@ -83,6 +94,8 @@ namespace WebSach.Areas.WebAdmin.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.Category_Id = new SelectList(db.Categories, "Category_Id", "Category_Name", books.Category_Id);
+            ViewBag.User_Name = new SelectList(db.User, "User_Name", "Full_Name", books.User_Name);
             return View(books);
         }
 
