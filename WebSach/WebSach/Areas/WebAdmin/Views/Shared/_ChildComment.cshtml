@@ -1,9 +1,0 @@
-﻿@model IEnumerable<WebSach.Models.Reaction>
-
-@foreach (var item in Model)
-{
-    <div class="comment_child" style="width:100%;padding-left:50px;background:#d5d5d5;">
-        <label>@item.Comment_content</label>
-        @{Html.RenderAction("_ChildComment", "AdminReactions", new { Comment_Id = item.Comment_Id });}
-    </div>
-}

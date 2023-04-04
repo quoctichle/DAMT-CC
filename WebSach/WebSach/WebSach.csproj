@@ -135,12 +135,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\WebAdmin\Controllers\AdminCategoriesController.cs" />
-    <Compile Include="Areas\WebAdmin\Controllers\AdminReactionsController.cs" />
-    <Compile Include="Areas\WebAdmin\Controllers\AdminUsersController.cs" />
     <Compile Include="Areas\WebAdmin\Controllers\AdminBooksController.cs" />
+    <Compile Include="Areas\WebAdmin\Controllers\AdminCategoriesController.cs" />
+    <Compile Include="Areas\WebAdmin\Controllers\AdminUsersController.cs" />
+    <Compile Include="Areas\WebAdmin\Controllers\HomeAdminController.cs" />
     <Compile Include="Areas\WebAdmin\WebAdminAreaRegistration.cs" />
-    <Compile Include="Content\ReactionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -148,8 +147,8 @@
     <Compile Include="Models\Books.cs" />
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\Chapter.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Model1.cs" />
-    <Compile Include="Models\Reaction.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -172,22 +171,16 @@
     <Content Include="Areas\WebAdmin\Views\Shared\Error.cshtml" />
     <Content Include="Areas\WebAdmin\Views\HomeAdmin\Index.cshtml" />
     <Content Include="Areas\WebAdmin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminCategories\Create.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminCategories\Delete.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminCategories\Details.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminCategories\Edit.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminCategories\Index.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminReactions\Create.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminReactions\Delete.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminReactions\Details.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminReactions\Edit.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\AdminReactions\Index.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminUsers\Create.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminUsers\Delete.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminUsers\Details.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminUsers\Edit.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminUsers\Index.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\Shared\_ChildComment.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\AdminCategories\Create.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\AdminCategories\Delete.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\AdminCategories\Details.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\AdminCategories\Edit.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\AdminCategories\Index.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminBooks\Create.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminBooks\Delete.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminBooks\Details.cshtml" />
@@ -226,6 +219,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\WebAdmin\Data\" />
+    <Folder Include="Content\img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -7,10 +7,10 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
         <h4>Books</h4>
         <hr />
@@ -24,10 +24,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Category_Id, "Category_Id", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                @Html.DropDownList("Category_Id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Category_Id, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -55,16 +55,11 @@
             </div>
         </div>
 
-
-
         <div class="form-group">
             @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Avatar, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "textdanger" })
-                <input type="file" name="fileUpload" id="fileUpload" accept="image/*"
-                       style="display:none;" />
-                <input type="button" id="btnUpload" value="Chọn" class="btn btn-success" />
+                @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -75,6 +70,15 @@
                 @Html.ValidationMessageFor(model => model.View, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.User_Name, "User_Name", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -89,41 +93,6 @@
             </div>
         </div>
     </div>
-    @section upload
- {
-        <script>
- $(function () {
- $('#btnUpload').click(function () {
- $('#fileUpload').trigger('click');
- });
- });
- $('#fileUpload').change(function () {
- if (window.FormData !== undefined) {
- var fileUpload = $('#fileUpload').get(0);
- var files = fileUpload.files;
-var formData = new FormData();
- formData.append('file', files[0]);
-$.ajax(
- {
- type: 'POST',
-url: '/AdminBooks/ProcessUpload',
-contentType: false,
-processData: false,
- data: formData,
- success: function (urlImage) {
- $('#pictureUpload').attr('src', urlImage);
- $('#Avatar').val(urlImage);
-11
- },
-error: function (err) {
- alert('Error ', err.statusText);
- }
- });
- }
- });
-        </script>
-    }
-
 }
 
 <div>
