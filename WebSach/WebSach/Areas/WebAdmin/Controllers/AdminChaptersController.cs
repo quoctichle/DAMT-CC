@@ -29,7 +29,7 @@ namespace WebSach.Areas.WebAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Chapter chapter = await db.Chapter.FindAsync(id);
+            Chapter chapter = db.Chapter.FirstOrDefault(c => c.Chapter_Id == id);
             if (chapter == null)
             {
                 return HttpNotFound();
@@ -81,7 +81,7 @@ namespace WebSach.Areas.WebAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Chapter chapter = await db.Chapter.FindAsync(id);
+            Chapter chapter = db.Chapter.FirstOrDefault(c => c.Chapter_Id == id);
             if (chapter == null)
             {
                 return HttpNotFound();
@@ -114,7 +114,7 @@ namespace WebSach.Areas.WebAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Chapter chapter = await db.Chapter.FindAsync(id);
+            Chapter chapter = db.Chapter.FirstOrDefault(c=>c.Chapter_Id== id);
             if (chapter == null)
             {
                 return HttpNotFound();
