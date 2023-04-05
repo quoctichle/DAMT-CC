@@ -16,7 +16,7 @@ namespace WebSach.Areas.WebAdmin.Controllers
     {
         private Model1 db = new Model1();
         // GET: WebAdmin/HomeAdmin
-        public ActionResult UserCountByMonth()
+        public ActionResult Index()
         {
             var userCounts = db.User
                 .GroupBy(u => new { Month = u.Create_at.Value.Month, Year = u.Create_at.Value.Year })
@@ -29,9 +29,27 @@ namespace WebSach.Areas.WebAdmin.Controllers
             ViewBag.Months = userCounts.Select(uc => uc.MonthYear.ToString("yyyy/MM")).ToList();
             ViewBag.UserCounts = userCounts.Select(uc => uc.Count).ToList();
 
+            var categories = db.Categories.ToList();
+            var bookCounts = categories.Select(c => c.Books.Count()).ToList();
+            ViewBag.Categories = categories.Select(c => c.Category_Id).ToList();
+            var categoryNames = categories.Select(c => c.Category_Name).ToList();
+
+            ViewBag.Categories = categoryNames;
+            ViewBag.BookCounts = bookCounts;
 
 
             return View();
+        }
+        public ActionResult TopBooks()
+        {
+            var topBooks = db.Books.OrderByDescending(b => b.View).Take(3).ToList();
+            return PartialView("_TopBooks", topBooks);
+        }
+
+        public ActionResult Category()
+        {
+            var Category = db.Categories.ToList();
+            return PartialView("_Category", Category);
         }
 
 
