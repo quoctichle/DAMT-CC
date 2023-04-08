@@ -77,6 +77,7 @@
     <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
@@ -104,6 +105,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms.Ribbon35, Version=3.5.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Forms.Ribbon35.3.5.8.0\lib\net35\System.Windows.Forms.Ribbon35.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -180,12 +184,15 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Books.cs" />
+    <Compile Include="Models\BooksViewModel.cs" />
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\Chapter.cs" />
     <Compile Include="Models\ChartViewModel.cs" />
-    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Follow.cs" />
     <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\ReadHistory.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\User_Login.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -193,14 +200,20 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\shortcuticon.png" />
-    <Content Include="Content\images\Đời-ngắn-đừng-ngủ-dài-3.jpg" />
+    <Content Include="Content\Images\Contacts\fb.png" />
+    <Content Include="Content\Images\shortcuticon.png" />
+    <Content Include="Content\Images\Contacts\ytb.png" />
+    <Content Include="Content\Images\Đời-ngắn-đừng-ngủ-dài-3.jpg" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="CSS\admin.css" />
+    <Content Include="CSS\admin2.css" />
     <Content Include="CSS\StyleSheet1.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Contacts\fb.png" />
+    <Content Include="Images\Contacts\ytb.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\WebAdmin\Views\web.config" />
@@ -223,12 +236,19 @@
     <Content Include="Areas\WebAdmin\Views\AdminBooks\Details.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminBooks\Edit.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminBooks\Index.cshtml" />
-    <Content Include="Areas\WebAdmin\Views\HomeAdmin\UserCountByMonth.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminChapters\Create.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminChapters\Details.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminChapters\Edit.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminChapters\Delete.cshtml" />
     <Content Include="Areas\WebAdmin\Views\AdminChapters\Index.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\Shared\_Category.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\Shared\_TopBooks.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\HomeAdmin\TheLoai.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\HomeAdmin\SachMoi.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\HomeAdmin\TopBooks.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\HomeAdmin\Category.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\HomeAdmin\XepHang.cshtml" />
+    <Content Include="Areas\WebAdmin\Views\AdminUsers\Login.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\demo.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -244,6 +264,7 @@
     <Content Include="Scripts\myscripts\JavaScript.js" />
     <Content Include="Scripts\myscripts\JavaScript1.js" />
     <Content Include="Scripts\myscripts\JavaScript2.js" />
+    <Content Include="Updates.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -263,6 +284,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\WebAdmin\Data\" />
     <Folder Include="Content\ContentChapter\" />
+    <Folder Include="Content\Images\Books\" />
+    <Folder Include="Images\Books\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

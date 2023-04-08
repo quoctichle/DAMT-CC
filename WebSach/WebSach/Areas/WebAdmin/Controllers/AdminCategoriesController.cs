@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebSach.Models;
+using System.Reflection;
 
 namespace WebSach.Areas.WebAdmin.Controllers
 {
@@ -18,12 +19,16 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // GET: WebAdmin/AdminCategories
         public async Task<ActionResult> Index()
         {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login", "AdminUsers");
             return View(await db.Categories.ToListAsync());
         }
 
         // GET: WebAdmin/AdminCategories/Details/5
         public async Task<ActionResult> Details(int? id)
         {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login", "AdminUsers");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,6 +44,8 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // GET: WebAdmin/AdminCategories/Create
         public ActionResult Create()
         {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login", "AdminUsers");
             return View();
         }
 
@@ -62,6 +69,8 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // GET: WebAdmin/AdminCategories/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login", "AdminUsers");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -93,6 +102,8 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // GET: WebAdmin/AdminCategories/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login", "AdminUsers");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

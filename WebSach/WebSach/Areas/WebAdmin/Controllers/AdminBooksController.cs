@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebSach.Models;
 using System.IO;
+using System.Reflection;
 
 namespace WebSach.Areas.WebAdmin.Controllers
 {
@@ -19,6 +20,8 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // GET: WebAdmin/AdminBooks
         public async Task<ActionResult> Index()
         {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login", "AdminUsers");
             var books = db.Books.Include(b => b.Categories).Include(b => b.User);
             return View(await books.ToListAsync());
         }
@@ -26,6 +29,8 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // GET: WebAdmin/AdminBooks/Details/5
         public async Task<ActionResult> Details(int? id)
         {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login", "AdminUsers");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -41,6 +46,8 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // GET: WebAdmin/AdminBooks/Create
         public ActionResult Create()
         {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login", "AdminUsers");
             ViewBag.Category_Id = new SelectList(db.Categories, "Category_Id", "Category_Name");
             ViewBag.User_Name = new SelectList(db.User, "User_Name", "Full_Name");
             return View();
@@ -72,7 +79,10 @@ namespace WebSach.Areas.WebAdmin.Controllers
                     books.Avatar = uniqueFileName;
                 }
 
-
+                books.Update_at = DateTime.Now;
+                books.Create_at = DateTime.Now;
+                books.User_Name = Session["Admin"].ToString();
+                books.View = 0;
                 db.Books.Add(books);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -83,20 +93,21 @@ namespace WebSach.Areas.WebAdmin.Controllers
             return View(books);
         }
 
-
         public string ProcessUpload(HttpPostedFileBase file)
         {
             if (file == null)
             {
                 return "";
             }
-            file.SaveAs(Server.MapPath("~/Content/images/" + file.FileName));
-            return "/Content/images/" + file.FileName;
+            file.SaveAs(Server.MapPath("~/Images/Users/" + file.FileName));
+            return "/Images/Books/" + file.FileName;
         }
 
         // GET: WebAdmin/AdminBooks/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login", "AdminUsers");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -132,6 +143,8 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // GET: WebAdmin/AdminBooks/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login", "AdminUsers");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

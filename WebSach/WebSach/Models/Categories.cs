@@ -17,6 +17,7 @@ namespace WebSach.Models
         [Key]
         public int Category_Id { get; set; }
 
+        [Required]
         [StringLength(250)]
         public string Category_Name { get; set; }
 

@@ -40,41 +40,24 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Create_at, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Create_at, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Create_at, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Update_at, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Update_at, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Update_at, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-2" })
+
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Avatar, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "textdanger" })
+                @Html.EditorFor(model => model.Avatar, new
+           {
+               htmlAttributes = new
+               {
+                   @id = "hinh",
+                   @class =
+            "form-control"
+               }
+           })
+                @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })
                 <input type="file" name="fileUpload" id="fileUpload" accept="image/*"
                        style="display:none;" />
                 <input type="button" id="btnUpload" value="Chọn" class="btn btn-success" />
             </div>
         </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.View, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.View, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.View, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -83,13 +66,6 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.User_Name, "User_Name", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("User_Name", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.User_Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -97,41 +73,40 @@
             </div>
         </div>
     </div>
+}
 
-    @section upload
+@section scripts
  {
-        <script>
-                     $(function () {
-                     $('#btnUpload').click(function () {
-                     $('#fileUpload').trigger('click');
-                     });
-                     });
-                     $('#fileUpload').change(function () {
-                     if (window.FormData !== undefined) {
-                     var fileUpload = $('#fileUpload').get(0);
-                     var files = fileUpload.files;
-                    var formData = new FormData();
-                     formData.append('file', files[0]);
-                    $.ajax(
-                     {
-                     type: 'POST',
-                    url: '/AdminBooks/ProcessUpload',
-                    contentType: false,
-                    processData: false,
-                     data: formData,
-                     success: function (urlImage) {
-                     $('#pictureUpload').attr('src', urlImage);
-                     $('#Avatar').val(urlImage);
-                   
-                     },
-                    error: function (err) {
-                     alert('Error ', err.statusText);
-                     }
-                     });
-                     }
-                     });
-        </script>
-    }
+    <script>
+        $(function () {
+            $('#btnUpload').click(function () {
+                $('#fileUpload').trigger('click');
+            });
+        });
+        $('#fileUpload').change(function () {
+            if (window.FormData !== undefined) {
+                var fileUpload = $('#fileUpload').get(0);
+                var files = fileUpload.files;
+                var formData = new FormData();
+                formData.append('file', files[0]);
+                $.ajax(
+                    {
+                        type: 'POST',
+                        url: '/AdminBooks/ProcessUpload',
+                        contentType: false,
+                        processData: false,
+                        data: formData,
+                        success: function (urlImage) {
+                            $('#pictureUpload').attr('src', urlImage);
+                            $('#hinh').val(urlImage);
+                        },
+                        error: function (err) {
+                            alert('Error ', err.statusText);
+                        }
+                    });
+            }
+        });
+    </script>
 }
 
 <div>

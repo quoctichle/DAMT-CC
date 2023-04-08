@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebSach.Models;
+using System.Reflection;
 
 namespace WebSach.Areas.WebAdmin.Controllers
 {
@@ -18,13 +19,17 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // GET: WebAdmin/AdminChapters
         public async Task<ActionResult> Index()
         {
-            var chapter = db.Chapter.Include(c => c.Books);
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login", "AdminUsers");
+            var chapter = db.Chapter.Include(c => c.Book_Id);
             return View(await chapter.ToListAsync());
         }
 
         // GET: WebAdmin/AdminChapters/Details/5
         public async Task<ActionResult> Details(int? id)
         {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login", "AdminUsers");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -40,6 +45,8 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // GET: WebAdmin/AdminChapters/Create
         public ActionResult Create()
         {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login", "AdminUsers");
             ViewBag.Book_Id = new SelectList(db.Books, "Book_Id", "Title");
             return View();
         }
@@ -77,6 +84,8 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // GET: WebAdmin/AdminChapters/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login", "AdminUsers");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -110,11 +119,13 @@ namespace WebSach.Areas.WebAdmin.Controllers
         // GET: WebAdmin/AdminChapters/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login", "AdminUsers");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Chapter chapter = db.Chapter.FirstOrDefault(c=>c.Chapter_Id== id);
+            Chapter chapter = db.Chapter.FirstOrDefault(c => c.Chapter_Id == id);
             if (chapter == null)
             {
                 return HttpNotFound();

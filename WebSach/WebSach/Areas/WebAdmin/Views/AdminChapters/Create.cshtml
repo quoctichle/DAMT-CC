@@ -62,35 +62,35 @@
     @section upload
  {
         <script>
-                     $(function () {
-                     $('#btnUpload').click(function () {
-                     $('#fileUpload').trigger('click');
-                     });
-                     });
-                     $('#fileUpload').change(function () {
-                     if (window.FormData !== undefined) {
-                     var fileUpload = $('#fileUpload').get(0);
-                     var files = fileUpload.files;
+            $(function () {
+                $('#btnUpload').click(function () {
+                    $('#fileUpload').trigger('click');
+                });
+            });
+            $('#fileUpload').change(function () {
+                if (window.FormData !== undefined) {
+                    var fileUpload = $('#fileUpload').get(0);
+                    var files = fileUpload.files;
                     var formData = new FormData();
-                     formData.append('file', files[0]);
+                    formData.append('file', files[0]);
                     $.ajax(
-                     {
-                     type: 'POST',
-                    url: '/AdminChapters/ProcessUpload',
-                    contentType: false,
-                    processData: false,
-                     data: formData,
-                     success: function (urlFile) {
-                         $('#fileUpload').attr('src', urlFile);
-                         $('#Content').val(urlFile);
-                    
-                     },
-                    error: function (err) {
-                     alert('Error ', err.statusText);
-                     }
-                     });
-                     }
-                     });
+                        {
+                            type: 'POST',
+                            url: '/AdminChapters/ProcessUpload',
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            success: function (urlFile) {
+                                $('#fileUpload').attr('src', urlFile);
+                                $('#Content').val(urlFile);
+
+                            },
+                            error: function (err) {
+                                alert('Error ', err.statusText);
+                            }
+                        });
+                }
+            });
         </script>
     }
 
